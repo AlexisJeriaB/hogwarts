@@ -1,5 +1,14 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1 class="my-5">Hogwarts</h1>
 
-
-
+<div class="my-5 row">
+  <% @characters.each do |character| %>
+    <div class="mb-5 col">
+      <div class="card">
+        <p>Nombre: <%= character.name %></p>
+        <p>Localización: <%= character.location %></p>
+        <p>Casa: <%= character.house %></p>
+        <br>
+      </div>
+    </div>
+  <% end %>
+</div>
