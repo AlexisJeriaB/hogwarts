@@ -59,3 +59,19 @@ server '3.142.146.234', user: 'deploy', roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+namespace :deploy do
+  desc 'Run database seeds'
+  task :seed do
+    on primary :db do
+      within current_path do
+        with rails_env: fetch(:stage) do
+          execute :rails, 'db:seed'
+        end
+      end
+    end
+  end
+end
+
+
+# after 'deploy:migrate', 'deploy:seed'
